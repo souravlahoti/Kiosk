@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#006796"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_width="700dip"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dip"
+            android:layout_gravity="center_horizontal"
+            android:text="Women in Technology"
+            android:textSize="56dip"
+            android:textColor="#ffffff"/>
+
+        <ImageView android:src="@drawable/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal" />
+
+
+            <EditText android:id="@+id/first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="20dip"
+                android:paddingTop="30dip"
+                android:alpha="0.8"
+                android:inputType="text"
+                android:textColorHint="#FFFFFF"
+                android:hint="First Name" />
+
+
+            <EditText android:id="@+id/last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:paddingTop="30dip"
+                android:textSize="20dip"
+                android:alpha="0.8"
+                android:hint="Last Name"/>
+
+            <EditText android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dip"
+                android:textColor="#FFFFFF"
+                android:textSize="20dip"
+                android:alpha="0.8"
+                android:textColorHint="#FFFFFF"
+                android:inputType="textEmailAddress"
+                android:hint="Email Address"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dip"
+            android:layout_marginTop="30dip"
+            android:textAlignment="center"
+            android:text="Yes, I would like to receive updates from Intel about their Women in Technology program. "
+            android:id="@+id/checkBox"
+            android:textColor="#FFFFFF"
+            android:checked="false" />
+
+        <TextView
+            android:id="@+id/link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dip"
+            android:text="@string/link"
+            android:textSize="12dip"
+            android:textColor="#ffffff"
+            android:alpha="0.8"/>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="20dp"
+            android:textSize="24dp"
+            android:textColor="#FFFFFF"
+            android:background="#00425F"
+            android:layout_gravity="center"
+            android:text="Submit"/>
+
+    </LinearLayout>
+</ScrollView>

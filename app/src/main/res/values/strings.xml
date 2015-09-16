@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Kiosk</string>
+
+    <string name="title_activity_kiosk">KioskActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="link">This information will be used only for the purpose of notifying you about upcoming events and activities that are a part of Intel’s “Women in Technology” initiative. To find out more about Intel’s Privacy Practices <a href="http://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Click Here</a></string>
 </resources>
