@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -36,7 +38,7 @@ public class KioskActivity extends Activity {
     private String first_name;
     private String last_name ;
     private String email_address;
-    private Boolean check;
+    private String check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,21 +59,54 @@ public class KioskActivity extends Activity {
         isChecked = (CheckBox) findViewById(R.id.checkBox);
         submit = (Button) findViewById(R.id.btn_submit);
 
-        first_name = fName.getText().toString();
-        last_name = lName.getText().toString();
-        email_address = eMail.getText().toString();
-        check = isChecked.isChecked();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                
+                first_name = fName.getText().toString();
+                last_name = lName.getText().toString();
+                email_address = eMail.getText().toString();
+                Log.i("first name", first_name);
+                Log.i("last name", last_name);
+
+                if (isChecked.isChecked())
+                    check = "Yes";
+                else
+                    check = "No";
+
+                Log.i("ischecked", check);
+                if (isValidate()) {
+                    Log.i("Executed inside", "Is validate");
+                    DbHelper dBHelper = new DbHelper(getApplicationContext(), first_name, last_name, email_address, check);
+                    dBHelper.getWritableDatabase();
+                    dBHelper.close();
+
+                }
+
             }
         });
 
 
 
+    }
+
+    protected boolean isValidate(){
+
+        if ( fName.getText().toString().matches("")) {
+            Toast.makeText(KioskActivity.this, "Please enter your first name", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (lName.getText().toString().matches("")) {
+            Toast.makeText(KioskActivity.this, "Please enter your last name", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (eMail.getText().toString().matches("")) {
+            Toast.makeText(KioskActivity.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else
+            return true;
     }
 
 }
