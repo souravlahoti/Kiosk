@@ -47,7 +47,8 @@ public class KioskActivity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_kiosk);
-
+        DbHelper dBHelper = new DbHelper(getApplicationContext());
+        dBHelper.getWritableDatabase();
         mLink = (TextView) findViewById(R.id.link);
         if (mLink != null) {
             mLink.setMovementMethod(LinkMovementMethod.getInstance());
@@ -78,10 +79,17 @@ public class KioskActivity extends Activity {
                 Log.i("ischecked", check);
                 if (isValidate()) {
                     Log.i("Executed inside", "Is validate");
-                    DbHelper dBHelper = new DbHelper(getApplicationContext(), first_name, last_name, email_address, check);
-                    dBHelper.getWritableDatabase();
-                    dBHelper.close();
-
+                    UserData data = new UserData();
+                    data.set_fname(first_name);
+                    data.set_lname(last_name);
+                    data.set_email(email_address);
+                    data.set_updatecheck(check);
+                    DbHelper d = new DbHelper(getApplicationContext());
+                    d.addEntry(data);
+                    fName.setText("");
+                    lName.setText("");
+                    eMail.setText("");
+                    isChecked.setChecked(false);
                 }
 
             }

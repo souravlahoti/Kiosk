@@ -27,22 +27,12 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String KEY_LNAME = "Last_Name";
     public static final String KEY_EMAIL = "Email_Address";
     public static final String KEY_CHECK = "Updates_Req";
-
-    //paramters
-    public String f_name ;
-    public String l_name;
-    public String e_mail;
-    public String checked;
     public Context context;
 
 
-    public DbHelper(Context context, String fname,String lname, String email,String checked) {
+    public DbHelper(Context context) {
         super(context, DB_NAME, null, 1);
         this.context = context;
-        f_name = fname;
-        l_name=lname;
-        e_mail=email;
-        this.checked = email;
     }
 
     @Override
@@ -60,30 +50,28 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         catch (Exception e){
             Log.i("table creation ",e.getMessage().toString());
-            Toast.makeText(context,"Tbable creation failed !!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"Table creation failed !!",Toast.LENGTH_SHORT).show();
         }
 
-        try {
-            String ROW1 = "INSERT INTO " + TABLE_NAME + " ("
-                    + KEY_FNAME + ", " + KEY_LNAME + ", "
-                    + KEY_EMAIL + ", "
-                    + KEY_CHECK + ") Values ('" + f_name + "','" + l_name + "','" + e_mail + "','" + checked + "')";
-            db.execSQL(ROW1);
-            Log.i("Executed inside", "response accepted");
-            Toast.makeText(context, " Response is Accepted !!", Toast.LENGTH_SHORT).show();
-        }
-        catch (Exception e)
-        {
-            Log.i("Error Insert",e.getMessage().toString());
-            Toast.makeText(context,"OOps something went wrong !! Please retry !!",Toast.LENGTH_SHORT).show();
-        }
+//        try {
+//            String ROW1 = "INSERT INTO " + TABLE_NAME + " ("
+//                    + KEY_FNAME + ", " + KEY_LNAME + ", "
+//                    + KEY_EMAIL + ", "
+//                    + KEY_CHECK + ") Values ('" + f_name + "','" + l_name + "','" + e_mail + "','" + checked + "')";
+//            db.execSQL(ROW1);
+//            Log.i("Executed inside", "response accepted");
+//            Toast.makeText(context, " Response is Accepted !!", Toast.LENGTH_SHORT).show();
+//        }
+//        catch (Exception e)
+//        {
+//            Log.i("Error Insert",e.getMessage().toString());
+//            Toast.makeText(context,"OOps something went wrong !! Please retry !!",Toast.LENGTH_SHORT).show();
+//        }
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        Log.i("Upgrade got executed","executed in uppgrade");
         Toast.makeText(context,"UPgrade !!",Toast.LENGTH_SHORT).show();
 
     }
@@ -92,11 +80,12 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, contact.getName()); // Contact Name
-        values.put(KEY_PH_NO, contact.getPhoneNumber()); // Contact Phone
-
-        // Inserting Row
-        db.insert(TABLE_CONTACTS, null, values);
+        values.put(KEY_FNAME, data.get_fname());
+        values.put(KEY_FNAME, data.get_lname());
+        values.put(KEY_EMAIL, data.get_email());
+        values.put(KEY_CHECK, data.get_updatecheck());
+        db.insert(TABLE_NAME, null, values);
         db.close(); // Closing database connection
+        Toast.makeText(context, " Response is Accepted !!", Toast.LENGTH_SHORT).show();
     }
 }
