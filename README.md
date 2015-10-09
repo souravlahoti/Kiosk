@@ -8,17 +8,19 @@ Uses Sqlite to store data of the attendees.
 
 Goto Terminal and type the following command
 
-'''
-adb shell
-run-as packagename
-chmod 666 databases\databasename
-exit
-cp \data\data\packagename\databases\databasename \sdcard\
-run-as packagename
-chmod 600 databases\databasename
-exit
-exit
-adb pull sdcard\databasename
-'''
+`adb shell` <br>
+`run-as packagename`<br>
+`chmod 666 databases\databasename`<br>
+`exit`<br>
+`cp \data\data\packagename\databases\databasename \sdcard\`<br>
+`run-as packagename`<br>
+`chmod 600 databases\databasename`<br>
+`exit`<br>
+`exit`<br>
+`adb pull sdcard\databasename`<br>
+
+
+Use sqlitebrowser to open the database.sqlite file
+
 
 
